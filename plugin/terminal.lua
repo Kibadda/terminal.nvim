@@ -36,15 +36,15 @@ vim.api.nvim_create_autocmd("TermOpen", {
 vim.api.nvim_create_autocmd("TermClose", {
   group = group,
   callback = function(args)
+    if not vim.api.nvim_buf_is_valid(args.buf) then
+      return
+    end
+
     local config = require "terminal.config"
 
     if vim.bo[args.buf].filetype == (config.options.options.filetype or "term") then
       if not config.options.hooks.termclose or config.options.hooks.termclose() then
         if config.options.autoclose then
-          if not vim.api.nvim_buf_is_valid(args.buf) then
-            return
-          end
-
           local split = vim.split(args.file, ":")
           if split[#split] == vim.opt.shell:get() then
             vim.cmd.bdelete { bang = true }

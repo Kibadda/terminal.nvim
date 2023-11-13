@@ -1,9 +1,9 @@
 local M = {}
 
----@class NeovimPluginTemplateConfig
+---@class TerminalConfig
 M.options = {}
 
----@param opts? NeovimPluginTemplateConfig
+---@param opts? TerminalConfig
 function M.set(opts)
   M.options = vim.tbl_deep_extend("force", opts or {})
 end

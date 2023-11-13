@@ -1,4 +1,4 @@
-# neovim-plugin-template
+# terminal.nvim
 
 ## 💡 Installation
 
@@ -6,7 +6,7 @@ install with your favorite plugin manager, e.g. [lazy.nvim](https://github.com/f
 
 ```lua
 {
-  "Kibadda/neovim-plugin-template",
+  "Kibadda/terminal.nvim",
   opts = {},
 }
 ```

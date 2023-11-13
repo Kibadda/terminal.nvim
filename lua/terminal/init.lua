@@ -1,9 +1,10 @@
 local M = {}
 
+--- setup plugin with provided options or defaults
+---
 ---@param opts? TerminalConfig
 function M.setup(opts)
-  local config = require("terminal.config")
-  config.set(opts)
+  require("terminal.config").set(opts)
 end
 
 return M

@@ -19,16 +19,11 @@ M.options = {
     ["<C-k>"] = "<C-\\><C-n><C-w>k",
     ["<C-l>"] = "<C-\\><C-n><C-w>l",
   },
+  ---@type table<"termopen"|"termclose"|"bufenter", (fun(): boolean)?>
   hooks = {
-    termopen = function()
-      return true
-    end,
-    termclose = function()
-      return true
-    end,
-    bufenter = function()
-      return true
-    end,
+    termopen = nil,
+    termclose = nil,
+    bufenter = nil,
   },
   startinsert = true,
   autoclose = true,

@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
   callback = function(args)
     local config = require "terminal.config"
 
-    if not config.options.hooks.termopen or config.options.hooks.termopen() then
+    if not config.options.hooks.termopen or config.options.hooks.termopen() ~= false then
       if config.options.options then
         for option, value in pairs(config.options.options) do
           vim.opt_local[option] = value
@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd("TermClose", {
     local config = require "terminal.config"
 
     if vim.bo[args.buf].filetype == (config.options.options.filetype or "term") then
-      if not config.options.hooks.termclose or config.options.hooks.termclose() then
+      if not config.options.hooks.termclose or config.options.hooks.termclose() ~= false then
         if config.options.autoclose then
           local split = vim.split(args.file, ":")
           if split[#split] == vim.opt.shell:get() then
@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     local config = require "terminal.config"
 
-    if not config.options.hooks.bufenter or config.options.hooks.bufenter() then
+    if not config.options.hooks.bufenter or config.options.hooks.bufenter() ~= false then
       if config.options.startinsert then
         vim.cmd.startinsert()
       end
